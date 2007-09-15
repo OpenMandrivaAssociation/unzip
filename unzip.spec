@@ -51,7 +51,7 @@ install unix/zipgrep %{buildroot}%{_bindir}
 
 for i in man/*.1; do install -m 644 $i %{buildroot}%{_mandir}/man1/; done
 
-cat > README.IMPORTANT.MANDRAKE << EOF
+cat > README.IMPORTANT.Mandriva << EOF
 This version of unzip is a stripped-down version which doesn't include
 the "unreduce" and "unshrink" algorithms. The first one is subject to
 a restrictive copyright by Samuel H. Smith which forbids its use in
@@ -60,12 +60,12 @@ second one (while their licensing would seem to mean that an
 extractor-only program would not be covered).
 
 Since the rest of the code is copyrighted by Info-Zip under a BSD-like
-license, this Mandrake package is covered by this license.
+license, this Mandriva package is covered by this license.
 
 Please note that currently, default compilation of the Info-Zip
 distribution also excludes the unreduce and unshrink code.
 
-Please contact MandrakeSoft at <bugs@linux-mandrake.com> if you have
+Please contact Mandriva at <bugs@mandriva.com> if you have
 any problems regarding this issue.
 EOF
 
@@ -74,7 +74,7 @@ EOF
 
 %files
 %defattr(-,root,root)
-%doc BUGS COPYING.OLD Contents History.* INSTALL README ToDo WHERE README.IMPORTANT.MANDRAKE
+%doc BUGS COPYING.OLD Contents History.* INSTALL README ToDo WHERE README.IMPORTANT.Mandriva
 %doc proginfo/
 %{_bindir}/*
 %{_mandir}/man1/*
