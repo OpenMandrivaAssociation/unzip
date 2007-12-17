@@ -14,7 +14,6 @@ Patch3:		unzip-5.52-CVE-2005-4667.patch
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
 License:	BSD-like
 Group:		Archiving/Compression
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 unzip will list, test, or extract files from a ZIP archive, commonly found
