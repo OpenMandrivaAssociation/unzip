@@ -1,6 +1,6 @@
 %define name	unzip
 %define version 5.52
-%define release %mkrel 4
+%define release %mkrel 5
 %define src_ver	%(echo %version|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
@@ -11,6 +11,7 @@ Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
 Patch1:		unzip542-size-64bit.patch
 Patch2:		unzip-5.52-CAN-2005-2475.patch
 Patch3:		unzip-5.52-CVE-2005-4667.patch
+Patch4:		unzip-5.52-CVE-2008-0888.diff
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
 License:	BSD-like
 Group:		Archiving/Compression
@@ -31,6 +32,7 @@ This version also has encryption support.
 %patch1 -p0
 %patch2 -p1 -b .can-2005-2475
 %patch3 -p1 -b .cve-2005-4667
+%patch4 -p0 -b .CVE-2008-0888
 
 %build
 %ifarch %{ix86}
