@@ -1,6 +1,6 @@
 %define name	unzip
 %define version 5.52
-%define release %mkrel 5
+%define release %mkrel 6
 %define src_ver	%(echo %version|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
