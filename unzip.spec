@@ -37,6 +37,7 @@ This version also has encryption support.
 %build
 %ifarch %{ix86}
 #gw FIXME: do we still need to disable LZW?
+%define Werror_cflags %nil
 %make -ef unix/Makefile linux CF="-DLZW_CLEAN %{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I. -DASM_CRC" CC=gcc LD=gcc AS=gcc AF="-Di386" CRC32=crc_gcc
 %else
 %make -ef unix/Makefile linux_noasm CF="-DLZW_CLEAN %{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I."
