@@ -8,7 +8,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
-Patch1:		unzip542-size-64bit.patch
+Patch1:		unzip552-size-64bit.patch
 Patch2:		unzip-5.52-CAN-2005-2475.patch
 Patch3:		unzip-5.52-CVE-2005-4667.patch
 Patch4:		unzip-5.52-CVE-2008-0888.diff
@@ -29,7 +29,7 @@ This version also has encryption support.
 %prep
 
 %setup -q
-%patch1 -p0
+%patch1 -p0 -b .64bit
 %patch2 -p1 -b .can-2005-2475
 %patch3 -p1 -b .cve-2005-4667
 %patch4 -p0 -b .CVE-2008-0888
