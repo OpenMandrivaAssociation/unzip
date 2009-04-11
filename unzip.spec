@@ -1,6 +1,6 @@
 %define name	unzip
 %define version 5.52
-%define release %mkrel 7
+%define release %mkrel 8
 %define src_ver	%(echo %version|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
@@ -35,9 +35,9 @@ This version also has encryption support.
 %patch4 -p0 -b .CVE-2008-0888
 
 %build
+%define Werror_cflags %nil
 %ifarch %{ix86}
 #gw FIXME: do we still need to disable LZW?
-%define Werror_cflags %nil
 %make -ef unix/Makefile linux CF="-DLZW_CLEAN %{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I. -DASM_CRC" CC=gcc LD=gcc AS=gcc AF="-Di386" CRC32=crc_gcc
 %else
 %make -ef unix/Makefile linux_noasm CF="-DLZW_CLEAN %{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I."
