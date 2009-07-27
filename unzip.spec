@@ -1,20 +1,16 @@
 %define name	unzip
-%define version 5.52
-%define release %mkrel 8
+%define version 6.0
+%define release %mkrel 1
 %define src_ver	%(echo %version|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
-Patch1:		unzip552-size-64bit.patch
-Patch2:		unzip-5.52-CAN-2005-2475.patch
-Patch3:		unzip-5.52-CVE-2005-4667.patch
-Patch4:		unzip-5.52-CVE-2008-0888.diff
-URL:		http://www.info-zip.org/pub/infozip/UnZip.html
 License:	BSD-like
 Group:		Archiving/Compression
+URL:		http://www.info-zip.org/pub/infozip/UnZip.html
+Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -28,19 +24,14 @@ This version also has encryption support.
 
 %prep
 
-%setup -q
-%patch1 -p0 -b .64bit
-%patch2 -p1 -b .can-2005-2475
-%patch3 -p1 -b .cve-2005-4667
-%patch4 -p0 -b .CVE-2008-0888
+%setup -qn %{name}%{src_ver}
 
 %build
 %define Werror_cflags %nil
 %ifarch %{ix86}
-#gw FIXME: do we still need to disable LZW?
-%make -ef unix/Makefile linux CF="-DLZW_CLEAN %{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I. -DASM_CRC" CC=gcc LD=gcc AS=gcc AF="-Di386" CRC32=crc_gcc
+%make -ef unix/Makefile linux CF="%{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I. -DASM_CRC" CC=gcc LD=gcc AS=gcc AF="-Di386" CRC32=crc_gcc
 %else
-%make -ef unix/Makefile linux_noasm CF="-DLZW_CLEAN %{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I."
+%make -ef unix/Makefile linux_noasm CF="%{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I."
 %endif
 
 %install
@@ -55,18 +46,9 @@ install unix/zipgrep %{buildroot}%{_bindir}
 for i in man/*.1; do install -m 644 $i %{buildroot}%{_mandir}/man1/; done
 
 cat > README.IMPORTANT.Mandriva << EOF
-This version of unzip is a stripped-down version which doesn't include
-the "unreduce" and "unshrink" algorithms. The first one is subject to
-a restrictive copyright by Samuel H. Smith which forbids its use in
-commercial products; and Unisys claimed a patent ("Welsh patent") on the 
-second one (while their licensing would seem to mean that an
-extractor-only program would not be covered).
+This version of unzip include the "unreduce" and "unshrink" algorithms.
+Since 20 June 2003 LZW patents has expired !
 
-Since the rest of the code is copyrighted by Info-Zip under a BSD-like
-license, this Mandriva package is covered by this license.
-
-Please note that currently, default compilation of the Info-Zip
-distribution also excludes the unreduce and unshrink code.
 
 Please contact Mandriva at <bugs@mandriva.com> if you have
 any problems regarding this issue.
@@ -81,5 +63,3 @@ EOF
 %doc proginfo/
 %{_bindir}/*
 %{_mandir}/man1/*
-
-
