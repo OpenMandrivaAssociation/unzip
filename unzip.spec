@@ -11,7 +11,9 @@ License:	BSD-like
 Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
 Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
+Patch0:		%{name}-6.0-libnatspec.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	libnatspec-devel
 
 %description
 unzip will list, test, or extract files from a ZIP archive, commonly found
@@ -25,6 +27,7 @@ This version also has encryption support.
 %prep
 
 %setup -qn %{name}%{src_ver}
+%patch0 -p1
 
 %build
 %define Werror_cflags %nil
