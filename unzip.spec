@@ -1,6 +1,6 @@
 %define name	unzip
 %define version 6.0
-%define release %mkrel 5
+%define release %mkrel 6
 %define src_ver	%(echo %version|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
@@ -32,9 +32,9 @@ This version also has encryption support.
 %build
 %define Werror_cflags %nil
 %ifarch %{ix86}
-%make -ef unix/Makefile linux CF="%{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I. -DASM_CRC" CC=gcc LD=gcc AS=gcc AF="-Di386" CRC32=crc_gcc
+%make -ef unix/Makefile linux CF="%{optflags} -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD -DDATE_FORMAT=DF_YMD -DNATIVE -Wall -I. -DASM_CRC" CC=gcc LD=gcc AS=gcc AF="-Di386" CRC32=crc_gcc
 %else
-%make -ef unix/Makefile linux_noasm CF="%{optflags} -D_FILE_OFFSET_BITS=64 -Wall -I."
+%make -ef unix/Makefile linux_noasm CF="%{optflags} -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD -DDATE_FORMAT=DF_YMD -DNATIVE -Wall -I."
 %endif
 
 %install
