@@ -1,12 +1,9 @@
-%define name	unzip
-%define version 6.0
-%define release %mkrel 7
-%define src_ver	%(echo %version|sed "s/\\.//"g)
+%define src_ver	%(echo %{version}|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		unzip
+Version:	6.0
+Release:	8
 License:	BSD-like
 Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
@@ -66,7 +63,7 @@ EOF
 + Revision: 693305
 - Fix make flags for better non-latin locales support
 
-* Wed Jul 06 2011 Александр Казанцев <kazancas@mandriva.org> 6.0-5
+* Wed Jul 06 2011 ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ€ ÐšÐ°Ð·Ð°Ð½Ñ†ÐµÐ² <kazancas@mandriva.org> 6.0-5
 + Revision: 689029
 - add patch for fix non-latin filenames in zip arch
 
@@ -119,18 +116,18 @@ EOF
 - kill changelog left by repsys
 
 
-* Tue Jan 30 2007 Götz Waschk <waschk@mandriva.org> 5.52-2mdv2007.0
+* Tue Jan 30 2007 GÃ¶tz Waschk <waschk@mandriva.org> 5.52-2mdv2007.0
 + Revision: 115447
 - Import unzip
 
-* Tue Jan 30 2007 G�tz Waschk <waschk@mandriva.org> 5.52-2mdv2007.1
+* Tue Jan 30 2007 Götz Waschk <waschk@mandriva.org> 5.52-2mdv2007.1
 - unpack patches
 
 * Thu Mar 16 2006 Olivier Blin <oblin@mandriva.com> 5.52-2mdk
 - from Stew Benedict: security update for CAN-2005-2475 (P2)
 - from Vincent Danen: security fix for CVE-2005-4667 (P3)
 
-* Thu May 05 2005 G�tz Waschk <waschk@mandriva.org> 5.52-1mdk
+* Thu May 05 2005 Götz Waschk <waschk@mandriva.org> 5.52-1mdk
 - drop patch 0 and define LZW_CLEAN instead
 - better source URL
 - New release 5.52
