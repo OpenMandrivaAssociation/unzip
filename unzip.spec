@@ -3,7 +3,7 @@
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
 Name:		unzip
 Version:	6.0
-Release:	9
+Release:	10
 License:	BSD-like
 Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
