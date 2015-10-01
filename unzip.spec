@@ -85,6 +85,9 @@ IX86FLAGS="-DNOMEMCPY -DIZ_HAVE_UXUIDGID -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NF
 %make -ef unix/Makefile linux_noasm CC=%{__cc} LF2="%{ldflags} -lnatspec" LD=%{__cc} CF="%{optflags} $COMMFLAGS"
 %endif
 
+%check
+make test -f unix/Makefile
+
 %install
 mkdir -p %{buildroot}{%{_bindir},%{_mandir}/man1}
 
