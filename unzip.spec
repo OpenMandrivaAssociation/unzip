@@ -3,7 +3,7 @@
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
 Name:		unzip
 Version:	6.0
-Release:	19
+Release:	21
 License:	BSD-like
 Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
@@ -42,6 +42,14 @@ Patch16:	unzip-6.0-cve-2014-8141.patch
 Patch17:	unzip-6.0-overflow-long-fsize.patch
 # Fix heap overflow and infinite loop when invalid input is given (#1260947)
 Patch18:	unzip-6.0-heap-overflow-infloop.patch
+# from debian
+Patch19:	19-cve-2016-9844-zipinfo-buffer-overflow.patch
+Patch20:	01-manpages-in-section-1-not-in-section-1l.patch
+Patch21:	04-handle-pkware-verification-bit.patch
+Patch22:	08-allow-greater-hostver-values.patch
+Patch23:	13-remove-build-date.patch
+Patch24:	17-restore-unix-timestamps-accurately.patch
+
 
 BuildRequires:	libnatspec-devel
 BuildRequires:	bzip2-devel
@@ -76,6 +84,9 @@ sed -i \
         -e 's:$(AS) :$(AS) $(ASFLAGS) :g' \
         unix/Makefile
 # flags
+# Delete bundled code to make sure we don't use it.
+rm -r bzip2
+
 COMMFLAGS="-DNOMEMCPY -DIZ_HAVE_UXUIDGID -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD -DDATE_FORMAT=DF_YMD -DNATIVE -Wall -I."
 IX86FLAGS="-DNOMEMCPY -DIZ_HAVE_UXUIDGID -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD -DDATE_FORMAT=DF_YMD -DNATIVE -Wall -I. -DASM_CRC"
 
