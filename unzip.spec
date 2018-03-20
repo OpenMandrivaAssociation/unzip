@@ -28,8 +28,9 @@ This version also has encryption support.
 
 %build
 %define Werror_cflags %nil
+%global optflags %optflags -O3
 %setup_compile_flags
-%make_build -j1 -f unix/Makefile linux_noasm CF="%{optflags} -I." CC="%{__cc}"
+%make_build -j1 CC="%{__cc}" -f unix/Makefile linux_noasm CF="%{optflags} -I." 
 
 %check
 make test -f unix/Makefile
@@ -41,7 +42,7 @@ ln -sf unzip zipinfo
 for i in unzip funzip unzipsfx zipinfo;	do install $i %{buildroot}%{_bindir}; done
 install unix/zipgrep %{buildroot}%{_bindir}
 
-for i in man/*.1; do install -m 644 $i %{buildroot}%{_mandir}/man1/; done
+for i in man/man1/*.1; do install -m 644 $i %{buildroot}%{_mandir}/man1/; done
 
 cat > README.IMPORTANT.OpenMandriva << EOF
 This version of unzip include the "unreduce" and "unshrink" algorithms.
