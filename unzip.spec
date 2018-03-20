@@ -10,8 +10,6 @@ URL:		http://www.info-zip.org/pub/infozip/UnZip.html
 #Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
 Source0:	http://antinode.info/ftp/info-zip/unzip610c23.zip
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(liblzma)
 
 %description
 unzip will list, test, or extract files from a ZIP archive, commonly found
