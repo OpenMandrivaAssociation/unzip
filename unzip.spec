@@ -54,7 +54,7 @@ any problems regarding this issue.
 EOF
 
 %files
-%doc BUGS COPYING.OLD Contents History.* INSTALL README ToDo WHERE README.IMPORTANT.OpenMandriva
+%doc BUGS COPYING.OLD Contents History.* README ToDo README.IMPORTANT.OpenMandriva
 %doc proginfo/
 %{_bindir}/*
 %{_mandir}/man1/*
