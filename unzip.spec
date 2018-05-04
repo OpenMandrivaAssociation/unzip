@@ -3,7 +3,7 @@
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
 Name:		unzip
 Version:	6.0
-Release:	23
+Release:	24
 License:	BSD-like
 Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
@@ -29,7 +29,7 @@ This version also has encryption support.
 %global optflags %optflags -O3
 %setup_compile_flags
 sed -i -e 's,CC=gcc,CC=%{__cc},g;s,LD=gcc,LD=%{__cc},g' unix/Makefile
-%make_build -j1 -f unix/Makefile linux_noasm CF="%{optflags} -I." LF1="%{optflags}"
+%make_build -j1 -f unix/Makefile linux_noasm CF="%{optflags} -I. -DNO_LCHMOD" LF1="%{optflags}"
 
 %check
 make test -f unix/Makefile
