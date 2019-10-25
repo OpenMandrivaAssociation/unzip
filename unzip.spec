@@ -3,12 +3,12 @@
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
 Name:		unzip
 Version:	6.0
-Release:	26
+Release:	27
 License:	BSD-like
 Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
 #Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
-Source0:	http://antinode.info/ftp/info-zip/unzip610c23.zip
+Source0:	http://antinode.info/ftp/info-zip/unzip610c25.zip
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -21,7 +21,7 @@ behaviors differ.
 This version also has encryption support.
 
 %prep
-%setup -qn %{name}610c23
+%setup -qn %{name}610c25
 %autopatch -p1
 
 %build
