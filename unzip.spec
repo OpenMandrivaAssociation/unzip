@@ -1,9 +1,10 @@
+%global debug_package %{nil}
 %define src_ver	%(echo %{version}|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
 Name:		unzip
 Version:	6.0
-Release:	27
+Release:	28
 License:	BSD-like
 Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
@@ -27,7 +28,7 @@ This version also has encryption support.
 %build
 %define Werror_cflags %nil
 %global optflags %optflags -O3
-%setup_compile_flags
+%set_build_flags
 sed -i -e 's,CC=gcc,CC=%{__cc},g;s,LD=gcc,LD=%{__cc},g' unix/Makefile
 %make_build -j1 -f unix/Makefile linux_noasm CF="%{optflags} -I. -DNO_LCHMOD" LF1="%{optflags}"
 
@@ -46,7 +47,6 @@ for i in man/man1/*.1; do install -m 644 $i %{buildroot}%{_mandir}/man1/; done
 cat > README.IMPORTANT.OpenMandriva << EOF
 This version of unzip include the "unreduce" and "unshrink" algorithms.
 Since 20 June 2003 LZW patents has expired !
-
 
 Please contact OpenMandriva at <http://issues.openmandriva.org> if you have
 any problems regarding this issue.
