@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%define src_ver	%(echo %{version}|sed "s/\\.//"g)
+%define src_ver %(echo %{version}|sed "s/\\.//"g)
 
 Summary:	Unpacks ZIP files such as those made by pkzip under DOS
 Name:		unzip
@@ -10,7 +10,7 @@ Group:		Archiving/Compression
 URL:		http://www.info-zip.org/pub/infozip/UnZip.html
 #Source0:	http://ftp.info-zip.org/pub/infozip/src/%{name}%{src_ver}.tar.bz2
 Source0:	http://antinode.info/ftp/info-zip/unzip610c25.zip
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:	pkgconfig(zlib)
 
 %description
 unzip will list, test, or extract files from a ZIP archive, commonly found
@@ -22,8 +22,7 @@ behaviors differ.
 This version also has encryption support.
 
 %prep
-%setup -qn %{name}610c25
-%autopatch -p1
+%autosetup -n %{name}610c25 -p1
 
 %build
 %define Werror_cflags %nil
@@ -56,4 +55,4 @@ EOF
 %doc BUGS COPYING.OLD Contents History.* README ToDo README.IMPORTANT.OpenMandriva
 %doc proginfo/
 %{_bindir}/*
-%{_mandir}/man1/*
+%doc %{_mandir}/man1/*
