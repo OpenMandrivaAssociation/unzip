@@ -1,0 +1,11 @@
+diff -up unzip60/extract.c.omv~ unzip60/extract.c
+--- unzip60/extract.c.omv~	2023-08-21 22:17:05.192148865 +0200
++++ unzip60/extract.c	2023-08-21 22:17:17.313273900 +0200
+@@ -44,6 +44,7 @@
+ #endif
+ #include "crc32.h"
+ #include "crypt.h"
++#include <wctype.h>
+ 
+ #define GRRDUMP(buf,len) { \
+     int i, j; \
