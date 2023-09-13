@@ -76,11 +76,13 @@ This version also has encryption support.
 %define Werror_cflags %nil
 %global optflags %optflags -O3
 %set_build_flags
-sed -i -e 's,CC=gcc,CC=%{__cc},g;s,LD=gcc,LD=%{__cc},g' unix/Makefile
+sed -i -e 's,CC=gcc,CC="%{__cc}",g;s,LD=gcc,LD="%{__cc}",g' unix/Makefile
 %make_build -j1 -f unix/Makefile linux_noasm CF="%{optflags} -I. -DNO_LCHMOD -DUNIX -DIZ_HAVE_UXUIDGID -DZIP64_SUPPORT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DUTF8_MAYBE_NATIVE -D_MBCS" LFLAGS1="%{build_ldflags}" LFLAGS2="%{build_ldflags}"
 
+%if ! %{cross_compiling}
 %check
 make test -f unix/Makefile
+%endif
 
 %install
 make -f unix/Makefile prefix=%{buildroot}%{_prefix} MANDIR=%{buildroot}%{_mandir}/man1 INSTALL="cp -p" install
