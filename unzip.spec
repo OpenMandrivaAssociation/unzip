@@ -7,7 +7,7 @@ Version:	6.00
 Release:	3
 License:	BSD-like
 Group:		Archiving/Compression
-URL:		http://www.info-zip.org/pub/infozip/UnZip.html
+URL:		https://www.info-zip.org/pub/infozip/UnZip.html
 # Some newer beta versions (up to 610c25) can be found at
 # http://antinode.info/ftp/info-zip/ - but since the project seems
 # to have been abandoned upstream for more than a decade, it's
